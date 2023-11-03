@@ -1,0 +1,19 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %}
+
+{% block content %}
+<br />
+<h1 align="center">Your Profile</h1>
+<br />
+<div class="container">
+    <style>
+        ul{
+            display: table;
+            margin: 0 auto;
+        }
+    </style>
+    <ul class="info">
+        <li id="first_name"><h2 id="first_name">First Name: {{user.first_name}}</h2></li>
+        <li id="email"><h2 id="email">Email: {{user.email}}</h2></li>
+    </ul>
+</div>
+{% endblock %}
