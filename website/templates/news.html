@@ -1,0 +1,90 @@
+{% extends "base.html" %} {% block title %}News{% endblock %} 
+{% block content%} 
+<br/>
+<h2 type="text" name="frmDateReg" id="date"></h2>
+<!-- Move this into a its own file ? -->
+<script>
+    function getDate(){
+    var todaydate = new Date();
+    var day = todaydate.getDate(); // day of month
+    var monthNum = todaydate.getMonth();
+    var year = todaydate.getFullYear();
+
+    var dayOfWeekNum = todaydate.getDay(); // day of week
+
+    var dayOfWeek = "";
+    var month = "";
+    
+    // convert dayOfWeekNum into its string representation
+    switch (dayOfWeekNum){
+        case 0:
+            dayOfWeek = "Sunday";
+            break;
+        case 1:
+            dayOfWeek = "Monday";
+            break;
+        case 2:
+            dayOfWeek = "Tuesday";
+            break;
+        case 3:
+            dayOfWeek = "Wednesday";
+            break;
+        case 4:
+            dayOfWeek = "Thursday";
+            break;
+        case 5:
+            dayOfWeek = "Friday";
+            break;
+        case 6:
+            dayOfWeek = "Saturday";
+            break;
+    }
+
+    // convert monthNum ito its string representation
+    switch (monthNum){
+        case 0:
+            month = "January";
+            break;
+        case 1:
+            month = "February";
+            break;
+        case 2:
+            month = "March";
+            break;
+        case 3:
+            month = "April";
+            break;
+        case 4:
+            month = "May";
+            break;
+        case 5:
+            month = "June";
+            break;
+        case 6:
+            month = "July";
+            break;
+        case 7:
+            month = "August";
+            break;
+        case 8:
+            month = "September";
+            break;
+        case 9:
+            month = "October";
+            break;
+        case 10:
+            month = "November";
+            break;
+        case 11:
+            month = "December";
+            break;
+    }
+
+    var dateString = dayOfWeek + ", " + month + " " + day + ", " + year;
+    document.getElementById("date").innerHTML = dateString;
+  }
+  getDate();
+</script>
+<!-- Move this into its own file? -->
+<h1 align="center">News Page</h1>
+{% endblock %}

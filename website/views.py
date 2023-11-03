@@ -6,12 +6,12 @@ from . import db
 views = Blueprint("views", __name__)
 
 
-@views.route("/")
-@views.route("/home")
+@views.route("/news")
 @login_required
 def home():
-    return render_template("home.html", user=current_user)
+    return render_template("news.html", user=current_user)
 
+@views.route("/")
 @views.route("/feed")
 @login_required
 def feed():
