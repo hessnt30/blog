@@ -1,6 +1,7 @@
 #news.html
 -----------
 - move the huge script for displaying date into its own js file?
+- make a style (css) sheet for this.
 
 #Should we get rid of Comments?
 ------------------------------
@@ -17,10 +18,21 @@ Cons.
     - Can make posts
     - How would we make sure not just anyone
     can make a band account?
+    - Need to add a separate login? (Not ideal)
+    - No likes/comments
     
 
 - Listener Account 
     - Can't make posts
-    - Can follow bands? (post notifications through Google texts/email D: )
+    - Can follow bands? 
+        - only functionality are notifications (post notifications through Google texts/email D: )
     - Can like posts
-    - Can comment (see line 5) ?
+    - Can comment (see line 5)
+
+# Current issues
+----------------
+- Issues with is_Authorized function in views.py and auth.py.
+    - Try catch did not work.
+    - Overall issue is that I want to only show certain pages
+      if a user is authenticated, but now that there are two
+      types of accounts its tricky. (this issue is the if statement at base.html:29)
