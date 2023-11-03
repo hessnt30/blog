@@ -26,7 +26,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbar">
           <div class="navbar-nav">
-            {% if user.is_authenticated %}
+            {% if is_Authenticated(user, band) == True %}
             <a class="nav-item nav-link" href="/feed">Feed</a>
             <a class="nav-item nav-link" href="/news">News</a>
             <a class="nav-item nav-link" href="/logout">Logout</a>

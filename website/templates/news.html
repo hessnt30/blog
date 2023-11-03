@@ -1,8 +1,14 @@
 {% extends "base.html" %} {% block title %}News{% endblock %} 
 {% block content%}
 <head>
-    <h2 align="right" id="date"></h2>
-    <!-- Move this into a its own file ? -->
+    <br/>
+    <div id="header">
+        <h1 align="center">News Page</h1>
+        <hr>
+        <p align="center" id="date"></p>
+        <hr>
+    </div>
+    <!-- TODO: Move this into file of its own -->
     <script>
         function getDate(){
         var todaydate = new Date();
@@ -85,11 +91,11 @@
     }
     getDate();
     </script>
-    <!-- Move this into its own file? -->
-    <h1 align="center">News Page</h1>
+    <!-- TODO: Move this into its own file? -->
 </head>
 <br/>
 <body>
+    <!-- TODO: Make a css sheet -->
     <style>
         #newstext {
             width: 500px;

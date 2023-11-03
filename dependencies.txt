@@ -1,3 +1,8 @@
 pip install flask
 pip install Flask-SQLAlchemy
 pip install flask-login
+
+FYI: if you are using VSCode and if gives you the issue
+of saying it can't find flask or something, hit Ctrl+Shift+P 
+and search "Python interpreter" and switch it to the one on
+ur machine. Like not the Microsoft Store one

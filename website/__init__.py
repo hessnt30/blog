@@ -19,7 +19,7 @@ def create_app():
     app.register_blueprint(auth, url_prefix='/')
 
     from werkzeug.urls import urlencode
-    from .models import User, Post, Comment, Like
+    from .models import User, Post, Comment, Like, Band
 
     login_manager = LoginManager()
     login_manager.login_view = 'auth.login'
