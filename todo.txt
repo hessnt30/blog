@@ -1,0 +1,26 @@
+#news.html
+-----------
+- move the huge script for displaying date into its own js file?
+
+#Should we get rid of Comments?
+------------------------------
+Pros.
+- Good way for listeners to connect with bands
+
+Cons.
+- Could have some issues with people spamming comments?
+- Have to make a filter to eliminate profanity 
+
+#Two Different Types of Accounts
+-------------------------------
+- Band Account
+    - Can make posts
+    - How would we make sure not just anyone
+    can make a band account?
+    
+
+- Listener Account 
+    - Can't make posts
+    - Can follow bands? (post notifications through Google texts/email D: )
+    - Can like posts
+    - Can comment (see line 5) ?
