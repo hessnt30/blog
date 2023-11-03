@@ -1,5 +1,4 @@
 from flask import Blueprint, render_template, redirect, url_for, request, flash
-from jinja2 import UndefinedError
 from . import db
 from .models import User, Band
 from flask_login import login_user, logout_user, login_required, current_user
@@ -15,10 +14,18 @@ def login():
         password = request.form.get("password")
 
         user = User.query.filter_by(email=email).first()
+        band = Band.query.filter_by(email=email).first()
         if user:
             if check_password_hash(user.password, password):
                 flash("Logged in!", category='success')
                 login_user(user, remember=True)
+                return redirect(url_for('views.feed'))
+            else:
+                flash('Password is incorrect.', category='error')
+        elif band:
+            if check_password_hash(band.password, password):
+                flash("Logged in!", category='success')
+                login_user(band, remember=True)
                 return redirect(url_for('views.feed'))
             else:
                 flash('Password is incorrect.', category='error')
@@ -58,7 +65,7 @@ def sign_up():
             db.session.commit()
             login_user(new_user, remember=True)
             flash('User created!')
-            return redirect(url_for('views.feed'), user=current_user, is_Authenticated=is_Authenticated)
+            return redirect(url_for('views.feed'))
 
     return render_template("sign_up.html", user=current_user, is_Authenticated=is_Authenticated)
 
@@ -87,15 +94,15 @@ def sign_up_band():
         elif len(email) < 4:
             flash("Email is invalid.", category='error')
         else:
-            new_band = Band(email=email, username=username, password=generate_password_hash(
+            band = Band(email=email, username=username, password=generate_password_hash(
                 password1, method='pbkdf2:sha1'), isBand=1)
-            db.session.add(new_band)
+            db.session.add(band)
             db.session.commit()
-            login_user(new_band, remember=True)
+            login_user(band, remember=True)
             flash('Band Account created!')
-            return redirect(url_for('views.feed'), new_band=current_user, is_Authenticated=is_Authenticated)
+            return redirect(url_for('views.feed'))
 
-    return render_template("sign_up_band.html", new_band=current_user, is_Authenticated=is_Authenticated)
+    return render_template("sign_up_band.html", band=current_user, is_Authenticated=is_Authenticated)
 
 def is_Authenticated(user, band):
     try: 

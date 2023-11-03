@@ -1,6 +1,5 @@
 from flask import Blueprint, render_template, flash, request, redirect, url_for
 from flask_login import login_required, current_user
-from jinja2 import UndefinedError
 from .models import Post, User, Comment, Like, Band
 from . import db
 
@@ -50,7 +49,7 @@ def delete_post(post_id):
         db.session.commit()
         flash('Post deleted.', category='success')
 
-    return redirect(url_for("views.feed"), is_Authenticated=is_Authenticated)
+    return redirect(url_for("views.feed"))
 
 # View all of a band's posts
 @views.route("/posts/<username>")
@@ -81,7 +80,7 @@ def create_comment(post_id):
         else:
             flash('Post does not exist.', category='error')
 
-    return redirect(url_for('views.feed'), is_Authenticated=is_Authenticated)
+    return redirect(url_for('views.feed'))
 
 @views.route("/delete-comment/<comment_id>")
 @login_required
@@ -96,7 +95,7 @@ def delete_comment(comment_id):
         db.session.delete(comment)
         db.session.commit()
 
-    return redirect(url_for("views.feed"), is_Authenticated=is_Authenticated)
+    return redirect(url_for("views.feed"))
 
 @views.route("/like-post/<post_id>", methods=['GET'])
 @login_required
@@ -115,7 +114,7 @@ def like(post_id):
         db.session.add(like)
         db.session.commit()
         
-    return redirect(url_for('views.feed'), is_Authenticated=is_Authenticated)
+    return redirect(url_for('views.feed'))
 
 def is_Authenticated(user, band):
     try: 
