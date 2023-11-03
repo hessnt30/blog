@@ -13,15 +13,16 @@
     {% for post in posts %}
         <div class="card border-dark">
             <div class="card-header d-flex justify-content-between align-items-center">
-                <a href="/posts/{{post.band.username}}">{{post.band.username}}</a>
+                <a href="/posts/{{post.user.username}}">{{post.user.username}}</a>
+                {% if user.is_authenticated %}
                 <div>
                     {{ post.likes|length }} 
-                    {% if band.id in post.likes|map(attribute="author")|list %}
+                    {% if user.id in post.likes|map(attribute="author")|list %}
                     <a href="like-post/{{post.id}}"><i class="fa-solid fa-thumbs-up"></i></a>
                     {% else %}
                     <a href="like-post/{{post.id}}"><i class="fa-regular fa-thumbs-up"></i></a>
                     {% endif %}
-                    {% if band.id == post.author %}
+                    {% if user.id == post.author %}
                     <div class="btn-group">
                         <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-bs-toggle="dropdown">
                         </button>
@@ -31,6 +32,12 @@
                     </div>
                     {% endif %}
                 </div>
+                {% else %}
+                <div>
+                    {{ post.likes|length }} 
+                    <i class="fa-solid fa-thumbs-up"></i>
+                </div>
+                {% endif %}
                 
             </div>
             <div class="card-body">
@@ -71,10 +78,12 @@
                     <small class="text-muted">No Comments</small>
                     {% endif %}
                 </p>
+                {% if user.is_authenticated %}
                 <form class="input-group" method='POST' action="/create-comment/{{post.id}}">
                     <input type="text" id="text" name="text" class="form-control" placeholder="Comment"/>
                     <button type="submit" class="btn btn-primary">Comment</button>
                 </form>
+                {% endif %}
             </div>
             <div class="card-footer text-muted">
                 {{post.date_created}}
@@ -83,13 +92,6 @@
     <br />
     {% endfor %}
 </div>
-    {% block footer %}
-    {% if user_isBand == 1%}
-    <div align="center">
-        <a href="/create-post"> <button type="button" class="btn btn-primary btn-lg">Create a Post</button></a>
-    </div>
-    {% endif %}
-    {% endblock%}
 
 
 {% endblock %}

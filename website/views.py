@@ -1,22 +1,20 @@
 from flask import Blueprint, render_template, flash, request, redirect, url_for
 from flask_login import login_required, current_user
-from .models import Post, User, Comment, Like, Band
+from .models import Post, User, Comment, Like
 from . import db
 
 views = Blueprint("views", __name__)
 
 
 @views.route("/news")
-@login_required
 def news():
-    return render_template("news.html", user=current_user, is_Authenticated=is_Authenticated)
+    return render_template("news.html", user=current_user)
 
 @views.route("/")
 @views.route("/feed")
-@login_required
 def feed():
     posts = Post.query.all()
-    return render_template("feed.html", user=current_user, band=current_user, posts=posts, is_Authenticated=is_Authenticated)
+    return render_template("feed.html", user=current_user, posts=posts)
 
 @views.route("/create-post", methods=['GET', 'POST'])
 @login_required
@@ -33,7 +31,7 @@ def create_post():
             flash('Post created', category='success')
             return redirect(url_for('views.feed'))
 
-    return render_template("create_posts.html", band=current_user, is_Authenticated=is_Authenticated)
+    return render_template("create_posts.html", user=current_user)
 
 @views.route("/delete-post/<post_id>")
 @login_required
@@ -51,18 +49,17 @@ def delete_post(post_id):
 
     return redirect(url_for("views.feed"))
 
-# View all of a band's posts
+# View all of a user's posts
 @views.route("/posts/<username>")
-@login_required
 def posts(username):
-    band = Band.query.filter_by(username=username).first()
+    user = User.query.filter_by(username=username).first()
 
-    if not band:
+    if not user:
         flash('No such band.', category='error')
         return redirect(url_for('views.feed'))
     
-    posts = band.posts
-    return render_template("posts.html", band=current_user, posts=posts, username=username, is_Authenticated=is_Authenticated)
+    posts = user.posts
+    return render_template("posts.html", user=current_user, posts=posts, username=username)
 
 @views.route("/create-comment/<post_id>", methods=['POST'])
 @login_required
@@ -115,13 +112,3 @@ def like(post_id):
         db.session.commit()
         
     return redirect(url_for('views.feed'))
-
-def is_Authenticated(user, band):
-    try: 
-        if user.is_authenticated:
-            return True
-    except: 
-        if band.is_authenticated:
-            return True
-    else:
-        return False

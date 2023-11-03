@@ -1,3 +1,18 @@
+### Current Features ###
+
+# Focus
+-------
+- For now just make it a one account thing.
+    - Bands make posts and people can see
+      upcoming shows.
+    - *not the best framework for adding all
+       those features.
+       
+# How to verify band accounts?
+-------------------------------
+- Need to make it so only legit bands
+  can make accounts. No trolls, but how?
+
 #news.html
 -----------
 - move the huge script for displaying date into its own js file?
@@ -11,6 +26,13 @@ Pros.
 Cons.
 - Could have some issues with people spamming comments?
 - Have to make a filter to eliminate profanity 
+
+# Current issues
+----------------
+- Need to fix so that bands can create posts.
+
+
+### Down the road add these features ###
 
 #Two Different Types of Accounts
 -------------------------------
@@ -29,10 +51,9 @@ Cons.
     - Can like posts
     - Can comment (see line 5)
 
-# Current issues
-----------------
-- Issues with is_Authorized function in views.py and auth.py.
-    - Try catch did not work.
-    - Overall issue is that I want to only show certain pages
-      if a user is authenticated, but now that there are two
-      types of accounts its tricky. (this issue is the if statement at base.html:29)
+# Implement a hierarchal system for users
+----------------------------------------
+- Make a base User model in database
+    - email, password, etc.
+- Then make a band user and a listener user
+  that are children of the User model.
