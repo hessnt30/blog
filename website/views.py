@@ -112,3 +112,8 @@ def like(post_id):
         db.session.commit()
         
     return redirect(url_for('views.feed'))
+
+@views.route("/profile")
+@login_required
+def profile():
+    return render_template("profile.html", user=current_user)
