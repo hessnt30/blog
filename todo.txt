@@ -9,6 +9,14 @@
        those features.
 
 
+# Styling
+---------
+- Try to match rest of pages style to that of
+  the login page.
+- Really need to make css sheets because the 
+  style tags are getting out of hand.
+
+
 # How to verify band accounts?
 -------------------------------
 - Need to make it so only legit bands
@@ -18,17 +26,6 @@
 #news.html
 -----------
 - move the huge script for displaying date into its own js file?
-- make a style (css) sheet for this.
-
-
-#Should we get rid of Comments?
-------------------------------
-Pros.
-- Good way for bands to connect with other bands
-
-Cons.
-- Could have some issues with people spamming comments?
-- Have to make a filter to eliminate profanity 
 
 
 ### Down the road add these features ###
