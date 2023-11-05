@@ -1,19 +1,95 @@
 {% extends "base.html" %} {% block title %}Create Post{% endblock %}
 
 {% block content %}
-<h1 align="center">Make a Post</h1>
+<div class="background" style="position:absolute;top:55px;right:0px;bottom:0px;left:0px; background-color:rgb(228, 228, 228);">
+    <div align="center" style="background-color: white;border-radius: 25px; padding: 10px;height:fit-content;width:800px;margin-left:auto;margin-right:auto;margin-top:100px;" class="login-container">
+        <br/>
+        <div style="margin-left:20px;" align="left">
+            <a href="/feed"><i class="fa fa-arrow-left fa-2x" aria-hidden="true"></i></a>
+        </div>
+        <p style="margin-top: 50px; font-size: 50px;" align="center">Make a Post</p>
 
-<br />
-<div align="left">
-    <a href="/feed"><button type="submit" class="btn btn-lg btn-secondary">Back</button></a>
-</div>
-<br />
-
-<form method='POST'>
-    <textarea name="text" id="text" class="form-control"></textarea>
-    <br />
-    <div align="center">
-        <button type="submit" class="btn btn-lg btn-primary">Post</button>
+        <form method='POST'>
+            <div style="margin-top: 50px;" align="center" id="date">
+                <label style="margin-right: 445px;" for="location">Date? *</label>
+                <input
+                  style="width: 500px;"
+                  type="text"
+                  id="date"
+                  name="date"
+                  class="form-control"
+                  placeholder="Address"
+                />
+                </div>
+            <br />
+            <div align="center" id="location">
+                <label style="margin-right: 440px;" for="location">Where? *</label>
+                <input
+                  style="width: 500px;"
+                  type="text"
+                  id="location"
+                  name="location"
+                  class="form-control"
+                  placeholder="Address"
+                />
+                </div>
+            <br />
+            <div align="center" id="time">
+                <label style="margin-right: 445px;" for="time">When? *</label>
+                <input
+                  style="width: 500px;"
+                  type="text"
+                  id="time"
+                  name="time"
+                  class="form-control"
+                  placeholder="Time"
+                />
+            </div>
+            <br />
+            <div align="center" id="price">
+                <label style="margin-right: 455px;" for="who">Price? *</label>
+                <input
+                  style="width: 500px;"
+                  type="text"
+                  id="price"
+                  name="price"
+                  class="form-control"
+                  placeholder="How much to get in? (If free just say 'Free')"
+                />
+            </div>
+            <br />
+            <div align="center" id="who">
+                <label style="margin-right: 355px;" for="who">Who else is Playing?</label>
+                <input
+                  style="width: 500px;"
+                  type="text"
+                  id="who"
+                  name="who"
+                  class="form-control"
+                  placeholder="Other Bands"
+                />
+            </div>
+            <br />
+            <div align="center" id="description">
+                <label style="margin-right: 450px;" for="description">Details</label>
+                <input
+                  style="width: 500px;"
+                  type="text"
+                  id="description"
+                  name="description"
+                  class="form-control"
+                  placeholder="Themes, extra details, etc."
+                />
+            </div>
+            <br />
+            <div align="center">
+                <button type="submit" class="btn btn-lg btn-primary">Post</button>
+            </div>
+        </form>
+        <div align="center">
+            <br/>
+            <p style="color:rgb(0, 110, 255);">* are required fields</p>
+        </div>
     </div>
-</form>
+</div>
 {% endblock%}

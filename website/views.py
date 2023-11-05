@@ -20,12 +20,21 @@ def feed():
 @login_required
 def create_post():
     if request.method == 'POST':
-        text = request.form.get('text')
+        location = request.form.get('location')
+        time = request.form.get('time')
+        price = request.form.get('price')
+        other_bands = request.form.get('who')
+        description = request.form.get('description')
 
-        if not text:
+        if not location or not time or not price:
             flash('Post cannot be empty.', category='error')
         else:
-            post = Post(text=text, author=current_user.id)
+            post = Post(location=location, 
+                        time=time, 
+                        price=price, 
+                        who=other_bands, 
+                        details=description, 
+                        author=current_user.id)
             db.session.add(post)
             db.session.commit()
             flash('Post created', category='success')

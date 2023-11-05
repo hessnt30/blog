@@ -43,8 +43,13 @@
                 
             </div>
             <div class="card-body">
-                <div class="card-text">{{post.text}}</div>
+                <!-- Actual Post -->
+                <div class="card-text">
+                    {{post.location}}
+
+                </div>
                 <br />
+                <!-- Comments -->
                 <div class="collapse" id="comments-{{post.id}}">
                     <div class="card">
                         <div class="card-body" id="comments-expanded-{{post.id}}">
