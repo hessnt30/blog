@@ -17,6 +17,7 @@ class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     location = db.Column(db.Text, nullable=False)
     date = db.Column(db.Text, nullable=False)
+    doors = db.Column(db.Text, nullable=True)
     time = db.Column(db.Text, nullable=False)
     price = db.Column(db.Text, nullable=False)
     who = db.Column(db.Text, nullable=True)

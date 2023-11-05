@@ -20,7 +20,9 @@ def feed():
 @login_required
 def create_post():
     if request.method == 'POST':
+        date = request.form.get('date')
         location = request.form.get('location')
+        doors = request.form.get('doors')
         time = request.form.get('time')
         price = request.form.get('price')
         other_bands = request.form.get('who')
@@ -29,7 +31,9 @@ def create_post():
         if not location or not time or not price:
             flash('Post cannot be empty.', category='error')
         else:
-            post = Post(location=location, 
+            post = Post(date=date,
+                        location=location, 
+                        doors=doors,
                         time=time, 
                         price=price, 
                         who=other_bands, 
