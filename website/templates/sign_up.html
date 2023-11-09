@@ -1,71 +1,73 @@
 {% extends "base.html" %} {% block title %}Sign Up{% endblock %} {% block
     content %}
-    <form method="POST">
-      <div class="background" style="position:absolute;top:55px;right:0px;bottom:0px;left:0px; background-color:rgb(228, 228, 228);">
-        <div align="center" style="background-color: white;border-radius: 25px; padding: 10px;height:fit-content;width:800px;margin-left:auto;margin-right:auto;margin-top:100px;" class="login-container">
-          <p style="margin-top: 100px; font-size: 50px;" align="center">Band Sign Up</p>
-          <div style="margin-top: 80px;" class="form-group">
-            <div style="margin-bottom: 40px;" align="center">
-              <p>Already have a Band Account? <a href="/login">Login</a></p>
-            </div>
-            <div align="center" id="email-input">
-            <label style="margin-right: 400px;" for="email">Email Address</label>
-            <input
-              style="width: 500px;"
-              type="text"
-              id="email"
-              name="email"
-              class="form-control"
-              placeholder="Enter Email"
-            />
-            </div>
-            <div align="center" id="username-input">
-            <label style="margin-right: 415px; margin-top: 20px;" for="username">Band Name</label>
-            <input
-              style="width: 500px;"
-              type="text"
-              id="username"
-              name="username"
-              class="form-control"
-              placeholder="Enter Band Name"
-            />
-            </div>
-            <div align="center" id="password-input">
-            <label style="margin-right: 430px; margin-top: 20px;" for="password1">Password</label>
-            <input
-              style="width: 500px;"
-              type="password"
-              id="password1"
-              name="password1"
-              class="form-control"
-              placeholder="Enter Password"
-            />
-            </div>
-            <div align="center" id="confirm-password-input">
-            <label style="margin-right: 370px; margin-top: 20px;" for="password2">Confirm Password</label>
-            <input
-              style="width: 500px;"
-              type="password"
-              id="password2"
-              name="password2"
-              class="form-control"
-              placeholder="Enter Password Again"
-            />
-            </div>
-            <div align="center">
-              <button 
-                class="btn btn-primary" 
-                style="width: 500px; margin-top: 50px; margin-bottom: 15px;" 
-                type="submit"
-                >Make Band Account</button>
-              <p style="margin-bottom: 0;">OR</p>
-              <a href="/feed">Continue as Guest</a>
-            </div>
-            <br/>
-            <br/>
-          </div> 
+    <body style="background-color:rgb(228, 228, 228);">
+      <form method="POST">
+        <div class="background" style="top:55px;right:0px;bottom:0px;left:0px; background-color:rgb(228, 228, 228);">
+          <div align="center" style="background-color: white;border-radius: 25px; padding: 10px;height:fit-content;width:800px;margin-left:auto;margin-right:auto;margin-top:100px;margin-bottom: 100px;" class="login-container">
+            <p style="margin-top: 100px; font-size: 50px;" align="center">Band Sign Up</p>
+            <div style="margin-top: 80px;" class="form-group">
+              <div style="margin-bottom: 40px;" align="center">
+                <p>Already have a Band Account? <a href="/login">Login</a></p>
+              </div>
+              <div align="center" id="email-input">
+              <label style="margin-right: 400px;" for="email">Email Address</label>
+              <input
+                style="width: 500px;"
+                type="text"
+                id="email"
+                name="email"
+                class="form-control"
+                placeholder="Enter Email"
+              />
+              </div>
+              <div align="center" id="username-input">
+              <label style="margin-right: 415px; margin-top: 20px;" for="username">Band Name</label>
+              <input
+                style="width: 500px;"
+                type="text"
+                id="username"
+                name="username"
+                class="form-control"
+                placeholder="Enter Band Name"
+              />
+              </div>
+              <div align="center" id="password-input">
+              <label style="margin-right: 430px; margin-top: 20px;" for="password1">Password</label>
+              <input
+                style="width: 500px;"
+                type="password"
+                id="password1"
+                name="password1"
+                class="form-control"
+                placeholder="Enter Password"
+              />
+              </div>
+              <div align="center" id="confirm-password-input">
+              <label style="margin-right: 370px; margin-top: 20px;" for="password2">Confirm Password</label>
+              <input
+                style="width: 500px;"
+                type="password"
+                id="password2"
+                name="password2"
+                class="form-control"
+                placeholder="Enter Password Again"
+              />
+              </div>
+              <div align="center">
+                <button 
+                  class="btn btn-primary" 
+                  style="width: 500px; margin-top: 50px; margin-bottom: 15px;" 
+                  type="submit"
+                  >Make Band Account</button>
+                <p style="margin-bottom: 0;">OR</p>
+                <a href="/feed">Continue as Guest</a>
+              </div>
+              <br/>
+              <br/>
+            </div> 
+        </div>
       </div>
-    </div>
-    </form>
+      </form>
+    </body>
     {% endblock %}
     

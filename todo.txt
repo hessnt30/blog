@@ -13,8 +13,18 @@
 ---------
 - Try to match rest of pages style to that of
   the login page.
+    - Login done
+    - Sign Up done
+    - Create Post done
 - Really need to make css sheets because the 
   style tags are getting out of hand.
+- Need to style the posts in the feed
+
+# Sorting
+---------
+- Need to sort the posts by date of show posted.
+  - Add a little h1 tag above shows grouped in the same day?
+  - Don't display a tag for a day if there is no shows
 
 
 # How to verify band accounts?

@@ -1,49 +1,51 @@
 {% extends "base.html" %} {% block title %}Login{% endblock %} {% block content
     %}
-    <form method="POST">
-      <div class="background" style="position:absolute;top:55px;right:0px;bottom:0px;left:0px; background-color:rgb(228, 228, 228);">
-        <div align="center" style="background-color: white;border-radius: 25px; padding: 10px;height:800px;width:800px;margin-left:auto;margin-right:auto;margin-top:100px;" class="login-container">
-          <p style="margin-top: 100px; font-size: 50px;" align="center">Band Login</p>
-          <div style="margin-top: 80px;" class="form-group">
-            <div style="margin-bottom: 40px;" align="center">
-              <p>Need a Band Account? <a href="/sign-up">Register Now</a></p>
-            </div>
-            
-            <div align="center" id="email-input">
-              <label style="margin-right: 400px;" for="email">Email Address</label>
-              <input
-              style="width: 500px;"
-              type="text"
-              id="email"
-              name="email"
-              class="form-control"
-              placeholder="Enter Email"
-            />
-            </div>
-            <div align="center" id="password-input">
-              <label style="margin-right: 432px; margin-top: 35px;" for="password">Password</label>
-              <input
+    <body style="background-color:rgb(228, 228, 228);">
+      <form method="POST">
+        <div class="background" style="top:55px;right:0px;bottom:0px;left:0px; background-color:rgb(228, 228, 228);">
+          <div align="center" style="background-color: white;border-radius: 25px; padding: 10px;height:800px;width:800px;margin-left:auto;margin-right:auto;margin-top:100px;margin-bottom:100px;" class="login-container">
+            <p style="margin-top: 100px; font-size: 50px;" align="center">Band Login</p>
+            <div style="margin-top: 80px;" class="form-group">
+              <div style="margin-bottom: 40px;" align="center">
+                <p>Need a Band Account? <a href="/sign-up">Register Now</a></p>
+              </div>
+              
+              <div align="center" id="email-input">
+                <label style="margin-right: 400px;" for="email">Email Address</label>
+                <input
                 style="width: 500px;"
-                type="password"
-                id="password"
-                name="password"
+                type="email"
+                id="email"
+                name="email"
                 class="form-control"
-                placeholder="Enter Password"
+                placeholder="Enter Email"
               />
-            </div>
-            <br />
-            <br />
-            <br />
-            <br />
-            <div align="center">
-              <button class="btn btn-primary" style="width: 500px; margin-bottom: 15px;" type="submit">Login</button>
-              <br/>
-              <p style="margin-bottom: 10px;">OR</p>
-              <a href="/feed">Continue as Guest</a>
+              </div>
+              <div align="center" id="password-input">
+                <label style="margin-right: 432px; margin-top: 35px;" for="password">Password</label>
+                <input
+                  style="width: 500px;"
+                  type="password"
+                  id="password"
+                  name="password"
+                  class="form-control"
+                  placeholder="Enter Password"
+                />
+              </div>
+              <br />
+              <br />
+              <br />
+              <br />
+              <div align="center">
+                <button class="btn btn-primary" style="width: 500px; margin-bottom: 15px;" type="submit">Login</button>
+                <br/>
+                <p style="margin-bottom: 10px;">OR</p>
+                <a href="/feed">Continue as Guest</a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </body>
     {% endblock %}
     

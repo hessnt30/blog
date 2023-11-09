@@ -1,106 +1,104 @@
 {% extends "base.html" %} {% block title %}Create Post{% endblock %}
 
 {% block content %}
-<div class="background" style="position:absolute;top:55px;right:0px;bottom:0px;left:0px; background-color:rgb(228, 228, 228);">
-    <div align="center" style="background-color: white;border-radius: 25px; padding: 10px;height:fit-content;width:800px;margin-left:auto;margin-right:auto;margin-top:100px;" class="login-container">
-        <br/>
-        <div style="margin-left:20px;" align="left">
-            <a href="/feed"><i class="fa fa-arrow-left fa-2x" aria-hidden="true"></i></a>
-        </div>
-        <p style="margin-top: 50px; font-size: 50px;" align="center">Make a Post</p>
+<body style="background-color:rgb(228, 228, 228);">
+    <div class="background" style="top:55px;right:0px;bottom:0px;left:0px; background-color:rgb(228, 228, 228);">
+      <div align="center" style="position: relative;background-color: white;border-radius: 25px; padding: 10px;height:fit-content;width:800px;margin-left:auto;margin-right:auto;margin-top:100px;margin-bottom:100px;" class="login-container">
+          <br/>
+          <div style="margin-left:20px;" align="left">
+              <a href="/feed"><i class="fa fa-arrow-left fa-2x" aria-hidden="true"></i></a>
+          </div>
+          <p style="margin-top: 50px; font-size: 50px;" align="center">Make a Post</p>
 
-        <form method='POST'>
-            <div style="margin-top: 50px;" align="center" id="date">
-                <label style="margin-right: 445px;" for="location">Date? *</label>
+          <form method='POST'>
+              <div style="margin-top: 50px;" align="center" id="show-date">
+                  <label style="margin-right: 445px;" for="location">Date? *</label>
+                  <input
+                    style="width: 500px;"
+                    type="date"
+                    id="date"
+                    name="date"
+                    class="form-control"
+                  />
+                  </div>
+              <br />
+              <div align="left" id="times">
+                <label style="display: inline-block; margin-left: 140px;" for="doors">Doors Open? *</label>
+                <label style="display: inline-block; margin-left: 65px;" for="time">Music Start? *</label>
+                <label style="display: inline-block; margin-left: 75px;" for="who">Price? (in $) *</label>
+            </div>
+            <div align="left" id="time-input">
+              <input
+                  style="display: inline-block; width: 150px;margin-left:140px;"
+                  type="time"
+                  id="doors"
+                  name="doors"
+                  class="form-control"
+                  placeholder="Doors"
+                />
+                  <input
+                    style="display: inline-block; width: 150px;margin-left: 20px;"
+                    type="time"
+                    id="time"
+                    name="time"
+                    class="form-control"
+                    placeholder="Music Starts"
+                  />
+                  <input
+                    style="display: inline-block; width: 150px;margin-left: 20px;"
+                    type="number"
+                    id="price"
+                    name="price"
+                    class="form-control"
+                    placeholder="Cost"
+                  />
+            </div>
+            <br />
+              <div align="center" id="location">
+                <label style="margin-right: 435px;" for="location">Where? *</label>
                 <input
                   style="width: 500px;"
-                  type="date"
-                  id="date"
-                  name="date"
+                  type="text"
+                  id="location"
+                  name="location"
                   class="form-control"
+                  placeholder="Location"
                 />
                 </div>
             <br />
-            <div align="center" id="time">
-              <label style="margin-right: 330px;" for="doors">When do Doors Open? *</label>
-              <input
-                style="width: 500px;"
-                type="time"
-                id="doors"
-                name="doors"
-                class="form-control"
-                placeholder="Doors"
-              />
-          </div>
-          <br />
-            <div align="center" id="time">
-                <label style="margin-right: 325px;" for="time">When does Music Start? *</label>
-                <input
-                  style="width: 500px;"
-                  type="time"
-                  id="time"
-                  name="time"
-                  class="form-control"
-                  placeholder="Music Starts"
-                />
-            </div>
-            <br />
-            <div align="center" id="location">
-              <label style="margin-right: 440px;" for="location">Where? *</label>
-              <input
-                style="width: 500px;"
-                type="text"
-                id="location"
-                name="location"
-                class="form-control"
-                placeholder="Location"
-              />
+              <div align="center" id="who">
+                  <label style="margin-right: 355px;" for="who">Who else is Playing?</label>
+                  <input
+                    style="width: 500px;"
+                    type="text"
+                    id="who"
+                    name="who"
+                    class="form-control"
+                    placeholder="Other Bands"
+                  />
               </div>
-          <br />
-            <div align="center" id="price">
-                <label style="margin-right: 410px;" for="who">Price? (in $) *</label>
-                <input
-                  style="width: 500px;"
-                  type="number"
-                  id="price"
-                  name="price"
-                  class="form-control"
-                  placeholder="How much to get in? (Input 0 for free shows)"
-                />
-            </div>
-            <br />
-            <div align="center" id="who">
-                <label style="margin-right: 355px;" for="who">Who else is Playing?</label>
-                <input
-                  style="width: 500px;"
-                  type="text"
-                  id="who"
-                  name="who"
-                  class="form-control"
-                  placeholder="Other Bands"
-                />
-            </div>
-            <br />
-            <div align="center" id="description">
-                <label style="margin-right: 450px;" for="description">Details</label>
-                <input
-                  style="width: 500px;"
-                  type="text"
-                  id="description"
-                  name="description"
-                  class="form-control"
-                  placeholder="Themes, extra details, etc."
-                />
-            </div>
-            <br />
-            <div align="center">
-                <button type="submit" class="btn btn-lg btn-primary">Post</button>
-            </div>
-        </form>
-        <div align="center">
-            <br/>
-            <p style="color:rgb(0, 110, 255);">* are required fields</p>
-        </div>
-    </div>
-</div>
+              <br />
+              <div align="center" id="description">
+                  <label style="margin-right: 450px;" for="description">Details</label>
+                  <input
+                    style="width: 500px;"
+                    type="text"
+                    id="description"
+                    name="description"
+                    class="form-control"
+                    placeholder="Themes, extra details, etc."
+                  />
+              </div>
+              <br />
+              <div align="center">
+                  <button type="submit" class="btn btn-lg btn-primary">Post</button>
+              </div>
+          </form>
+          <div align="center">
+              <br/>
+              <p style="color:rgb(0, 110, 255);">* are required fields</p>
+          </div>
+      </div>
+  </div>
+</body>
 {% endblock%}
