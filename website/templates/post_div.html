@@ -6,12 +6,6 @@
 <br/>
 
 <div id="posts">
-    <style>
-        #posts {
-            height: 530px;
-            overflow:auto
-        }
-    </style>
     {% for post in posts %}
         <div class="card border-dark">
             <div class="card-header d-flex justify-content-between align-items-center">
@@ -45,8 +39,23 @@
             <div class="card-body">
                 <!-- Actual Post -->
                 <div class="card-text">
-                    {{post.location}} {{post.date}} {{post.doors}} {{post.time}} ${{post.price}} {{post.details}}
+                    <div>
+                        <h1>{{post.date}}</h1>
+                        <p>Join {{post.user.username}} at {{post.location}}</p>
+                        <p>Doors Open: {{post.doors}} Music Starts: {{post.time}}</p>
+                        {%if post.price|int == 0 %}
+                        <p>Free Show!</p>
+                        {% else %}
+                        <p>${{post.price}} to get in</p>
+                        {% endif %}
 
+                        {% if post.who %}
+                        <p>Also playing is {{post.who}}</p>
+                        {% endif %}
+                        {% if post.details %}
+                        <p>Details: {{post.details}}</p>
+                        {% endif %}
+                    </div>
                 </div>
                 <br />
                 <!-- Comments -->
@@ -93,7 +102,7 @@
                 {% endif %}
             </div>
             <div class="card-footer text-muted">
-                {{post.date_created}}
+                <small>Posted: {{post.date_created}}</small>
             </div>
         </div>
     <br />

@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, flash, request, redirect, url_for
 from flask_login import login_required, current_user
 from .models import Post, User, Comment, Like
 from . import db
-
+from sqlalchemy import DateTime
 views = Blueprint("views", __name__)
 
 
@@ -13,7 +13,7 @@ def news():
 @views.route("/")
 @views.route("/feed")
 def feed():
-    posts = Post.query.all()
+    posts = Post.query.order_by(Post.date).all()
     return render_template("feed.html", user=current_user, posts=posts)
 
 @views.route("/create-post", methods=['GET', 'POST'])
@@ -27,6 +27,12 @@ def create_post():
         price = request.form.get('price')
         other_bands = request.form.get('who')
         description = request.form.get('description')
+
+        year = date[0:4]
+        month = date[5:7]
+        day = date[8:10]
+
+        date = month + "/" + day + "/" + year
 
         if not location or not time or not price:
             flash('Post cannot be empty.', category='error')
