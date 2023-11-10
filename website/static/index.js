@@ -14,3 +14,10 @@ function like(postId) {
       })
       .catch((e) => alert("Could not like post."));
   }
+
+function createComment(postId) {
+    const commentButton = document.getElementById(`comment-button`);
+    const commentText = document.getElementById(`comment-text`);
+
+    
+}

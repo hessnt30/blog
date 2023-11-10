@@ -41,9 +41,12 @@
                     <div class="card-body">
                         <!-- Actual Post -->
                         <div class="card-text">
-                            <div>
-                                <h1 align="center">{{post.user.username}}</h1>
-                                <p>Where? {{post.location}}</p>
+                            <div align="center">
+                                <br />
+                                <h1>{{post.user.username}}</h1>
+                                <br />
+                                <p>{{post.location}}</p>
+                                <p>{{post.date}}</p>
                                 <p>Doors Open: {{post.doors}} Music Starts: {{post.time}}</p>
                                 {%if post.price|int == 0 %}
                                 <p>Free Show!</p>
