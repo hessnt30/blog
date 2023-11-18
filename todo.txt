@@ -20,12 +20,6 @@
   style tags are getting out of hand.
 - Need to style the posts in the feed
 
-# Sorting
----------
-- Need to sort the posts by date of show posted.
-  - Add a little h1 tag above shows grouped in the same day?
-  - Don't display a tag for a day if there is no shows
-
 
 # How to verify band accounts?
 -------------------------------

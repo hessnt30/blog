@@ -1,113 +1,120 @@
 {% extends "base.html" %} {% block title %}Feed{% endblock %} 
 {% block content%} 
 
-<br/>
-<h1 align="center">{% block header %}Feed{% endblock %}</h1>
-<br/>
+<body style="background-color:rgb(228, 228, 228);">
+    <br/>
+    <h1 align="center">{% block header %}Feed{% endblock %}</h1>
+    <br/>
 
-<div id="posts">
-    {% for post in posts %}
-        <div class="card border-dark">
-            <div class="card-header d-flex justify-content-between align-items-center">
-                <a href="/posts/{{post.user.username}}">{{post.user.username}}</a>
-                {% if user.is_authenticated %}
-                <div>
-                    {{ post.likes|length }} 
-                    {% if user.id in post.likes|map(attribute="author")|list %}
-                    <a href="like-post/{{post.id}}"><i class="fa-solid fa-thumbs-up"></i></a>
-                    {% else %}
-                    <a href="like-post/{{post.id}}"><i class="fa-regular fa-thumbs-up"></i></a>
-                    {% endif %}
-                    {% if user.id == post.author %}
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-bs-toggle="dropdown">
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a href="/delete-post/{{post.id}}" class="dropdown-item">Delete</a></li>
-                        </ul>
-                    </div>
-                    {% endif %}
-                </div>
-                {% else %}
-                <div>
-                    {{ post.likes|length }} 
-                    <i class="fa-solid fa-thumbs-up"></i>
-                </div>
-                {% endif %}
-                
-            </div>
-            <div class="card-body">
-                <!-- Actual Post -->
-                <div class="card-text">
-                    <div>
-                        <h1>{{post.date}}</h1>
-                        <p>Join {{post.user.username}} at {{post.location}}</p>
-                        <p>Doors Open: {{post.doors}} Music Starts: {{post.time}}</p>
-                        {%if post.price|int == 0 %}
-                        <p>Free Show!</p>
+    <div class="container" style="width:600px;">
+        <div id="posts">
+            {% for post in posts %}
+                <div class="card border-dark">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <a href="/posts/{{post.user.username}}">{{post.user.username}}</a>
+                        {% if user.is_authenticated %}
+                        <div>
+                            <span id="likes-count-{{post.id}}">{{ post.likes|length }}</span>
+                            {% if user.id in post.likes|map(attribute="author")|list %}
+                            <i class="fa-solid fa-thumbs-up" id="like-button-{{post.id}}" onclick="like('{{post.id}}')"></i>
+                            {% else %}
+                            <i class="fa-regular fa-thumbs-up" id="like-button-{{post.id}}" onclick="like('{{post.id}}')"></i>
+                            {% endif %}
+                            {% if user.id == post.author %}
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/delete-post/{{post.id}}" class="dropdown-item">Delete</a></li>
+                                </ul>
+                            </div>
+                            {% endif %}
+                        </div>
                         {% else %}
-                        <p>${{post.price}} to get in</p>
+                        <div>
+                            {{ post.likes|length }} 
+                            <i class="fa-solid fa-thumbs-up"></i>
+                        </div>
                         {% endif %}
-
-                        {% if post.who %}
-                        <p>Also playing is {{post.who}}</p>
-                        {% endif %}
-                        {% if post.details %}
-                        <p>Details: {{post.details}}</p>
-                        {% endif %}
+                        
                     </div>
-                </div>
-                <br />
-                <!-- Comments -->
-                <div class="collapse" id="comments-{{post.id}}">
-                    <div class="card">
-                        <div class="card-body" id="comments-expanded-{{post.id}}">
-                            {% for comment in post.comments%} 
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div>
-                                <a href="/posts/{{comment.user.username}}">{{comment.user.username}}</a>: {{comment.text}}
-                                </div>
-                                <div>
-                                    <small class="text-muted"> {{comment.date_created}} </small>
-                                    {% if user.id == comment.author or user.id == post.author %}
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-bs-toggle="dropdown">
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="/delete-comment/{{comment.id}}" class="dropdown-item">Delete</a></li>
-                                        </ul>
+                    <div class="card-body">
+                        <!-- Actual Post -->
+                        <div class="card-text">
+                            <div align="center">
+                                <br />
+                                <h1>{{post.user.username}}</h1>
+                                <br />
+                                <p>{{post.location}}</p>
+                                <p>{{post.date}}</p>
+                                <p>Doors Open: {{post.doors}} Music Starts: {{post.time}}</p>
+                                {%if post.price|int == 0 %}
+                                <p>Free Show!</p>
+                                {% else %}
+                                <p>${{post.price}} to get in</p>
+                                {% endif %}
+
+                                {% if post.who %}
+                                <p>Also playing is {{post.who}}</p>
+                                {% endif %}
+                                {% if post.details %}
+                                <p>Details: {{post.details}}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <br />
+                        <!-- Comments -->
+                        <div class="collapse" id="comments-{{post.id}}">
+                            <div class="card">
+                                <div class="card-body" id="comments-expanded-{{post.id}}">
+                                    {% for comment in post.comments%} 
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                        <a href="/posts/{{comment.user.username}}">{{comment.user.username}}</a>: {{comment.text}}
+                                        </div>
+                                        <div>
+                                            <small class="text-muted"> {{comment.date_created}} </small>
+                                            {% if user.id == comment.author or user.id == post.author %}
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="/delete-comment/{{comment.id}}" class="dropdown-item">Delete</a></li>
+                                                </ul>
+                                            </div>
+                                            {% endif %}
+                                        </div>
                                     </div>
-                                    {% endif %}
+                                    {% endfor %}
                                 </div>
                             </div>
-                            {% endfor %}
                         </div>
+                        <!-- This is the comments. Handles the collapse -->
+                        <p class="card-text">
+                            {% if post.comments|length > 0 %}
+                            <a data-bs-toggle="collapse" href="#comments-{{post.id}}" role="button">
+                                <small>View {{post.comments|length}} Comments</small>
+                            </a>
+                            {% else %}
+                            <small class="text-muted">No Comments</small>
+                            {% endif %}
+                        </p>
+                        {% if user.is_authenticated %}
+                        <form class="input-group" method='POST' action="/create-comment/{{post.id}}">
+                            <input type="text" id="text" name="text" class="form-control" placeholder="Comment"/>
+                            <button type="submit" class="btn btn-primary">Comment</button>
+                        </form>
+                        {% endif %}
+                    </div>
+                    <div class="card-footer text-muted">
+                        <small>Posted: {{post.date_created}}</small>
                     </div>
                 </div>
-                <!-- This is the comments. Handles the collapse -->
-                <p class="card-text">
-                    {% if post.comments|length > 0 %}
-                    <a data-bs-toggle="collapse" href="#comments-{{post.id}}" role="button">
-                        <small>View {{post.comments|length}} Comments</small>
-                    </a>
-                    {% else %}
-                    <small class="text-muted">No Comments</small>
-                    {% endif %}
-                </p>
-                {% if user.is_authenticated %}
-                <form class="input-group" method='POST' action="/create-comment/{{post.id}}">
-                    <input type="text" id="text" name="text" class="form-control" placeholder="Comment"/>
-                    <button type="submit" class="btn btn-primary">Comment</button>
-                </form>
-                {% endif %}
-            </div>
-            <div class="card-footer text-muted">
-                <small>Posted: {{post.date_created}}</small>
-            </div>
+            <br />
+            {% endfor %}
         </div>
-    <br />
-    {% endfor %}
-</div>
+    </div>
+</body>
 
 
 {% endblock %}
